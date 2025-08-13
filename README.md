@@ -22,22 +22,23 @@ It allows users to interactively explore how popular pathfinding algorithms work
 
 ---
 ## 📂 Project Structure
--📦 Pathfinding-Visualizer
--┣ 📂 public
--┃ ┗ 📜 index.html
--┣ 📂 src
--┃ ┣ 📂 components
--┃ ┃ ┣ 📜 Grid.jsx
--┃ ┃ ┣ 📜 ControlPanel.jsx
--┃ ┃ ┗ 📜 Legend.jsx
--┃ ┣ 📂 hooks
--┃ ┃ ┗ 📜 usePathfinding.js
--┃ ┣ 📜 App.jsx
--┃ ┣ 📜 index.js
--┃ ┗ 📜 styles.css
--┣ 📜 package.json
--┣ 📜 README.md
--┗ 📜 .gitignore
-
+```
+📦 Pathfinding-Visualizer
+┣ 📂 public
+┃ ┗ 📜 index.html
+┣ 📂 src
+┃ ┣ 📂 components
+┃ ┃ ┣ 📜 Grid.jsx
+┃ ┃ ┣ 📜 ControlPanel.jsx
+┃ ┃ ┗ 📜 Legend.jsx
+┃ ┣ 📂 hooks
+┃ ┃ ┗ 📜 usePathfinding.js
+┃ ┣ 📜 App.jsx
+┃ ┣ 📜 index.js
+┃ ┗ 📜 styles.css
+┣ 📜 package.json
+┣ 📜 README.md
+┗ 📜 .gitignore
+```
 ---
 
