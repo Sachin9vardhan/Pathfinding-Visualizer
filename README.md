@@ -21,24 +21,33 @@ It allows users to interactively explore how popular pathfinding algorithms work
   - Designed to work on different screen sizes.
 
 ---
-## 📂 Project Structure
+##Usage
 ```
-📦 Pathfinding-Visualizer
-┣ 📂 public
-┃ ┗ 📜 index.html
-┣ 📂 src
-┃ ┣ 📂 components
-┃ ┃ ┣ 📜 Grid.jsx
-┃ ┃ ┣ 📜 ControlPanel.jsx
-┃ ┃ ┗ 📜 Legend.jsx
-┃ ┣ 📂 hooks
-┃ ┃ ┗ 📜 usePathfinding.js
-┃ ┣ 📜 App.jsx
-┃ ┣ 📜 index.js
-┃ ┗ 📜 styles.css
-┣ 📜 package.json
-┣ 📜 README.md
-┗ 📜 .gitignore
+Left-click on a cell → Toggle wall.
+Click & drag start or end node → Move them.
+Click & drag elsewhere → Draw walls.
+Use the Control Panel to:
+Run the chosen algorithm.
+Change animation speed.
+Reset or clear the grid.
+```
+---
+## Project Structure
+```
+Pathfinding-Visualizer/
+├── src/
+│   ├── components/
+│   │   ├── Grid.jsx
+│   │   ├── ControlPanel.jsx
+│   ├── hooks/
+│   │   ├── usePathfinding.js
+│   ├── App.jsx
+│   ├── index.js
+├── public/
+│   ├── index.html
+├── package.json
+└── README.md
+
 ```
 ---
 
