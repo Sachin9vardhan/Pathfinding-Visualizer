@@ -22,18 +22,5 @@ It allows users to interactively explore how popular pathfinding algorithms work
 
 ---
 
-Pathfinding-Visualizer/
-├── src/
-│   ├── components/
-│   │   ├── Grid.jsx
-│   │   ├── ControlPanel.jsx
-│   ├── hooks/
-│   │   ├── usePathfinding.js
-│   ├── App.jsx
-│   ├── index.js
-├── public/
-│   ├── index.html
-├── package.json
-└── README.md
 
 
