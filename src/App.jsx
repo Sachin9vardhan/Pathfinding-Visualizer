@@ -20,6 +20,7 @@ function App() {
     toggleWall,
     moveStartOrEnd,
     animateAlgorithm,
+    stopAnimation // <-- destructure from hook
   } = usePathfinding();
 
   const [isMousePressed, setIsMousePressed] = useState(false);
