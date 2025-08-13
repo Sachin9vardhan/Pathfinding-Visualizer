@@ -76,12 +76,18 @@ export const usePathfinding = () => {
   }, []);
 
   const toggleWall = useCallback((row, col) => {
-    if (isAnimating) return;
+    console.log('Toggle wall called for:', row, col);
+    if (isAnimating) {
+      console.log('Animation in progress, ignoring wall toggle');
+      return;
+    }
     setGrid((prevGrid) => {
       const newGrid = prevGrid.map(r => r.map(c => ({ ...c })));
       const cell = newGrid[row][col];
       if (!cell.isStart && !cell.isEnd) {
         newGrid[row][col].isWall = !cell.isWall;
+        // 
+        // 
       }
       return newGrid;
     });
