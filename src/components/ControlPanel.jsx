@@ -101,7 +101,7 @@ export const ControlPanel = ({
       </div>
 
       {/* Control Buttons */}
-      <div className="flex gap-3">
+      <div className="flex flex-wrap gap-4 justify-center">
         <button
           onClick={onReset}
           disabled={isAnimating}
