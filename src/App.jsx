@@ -24,7 +24,18 @@ function App() {
   } = usePathfinding();
 
   const [isMousePressed, setIsMousePressed] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [dragMode, setDragMode] = useState(null);
+
+  const handleStopOrResume = () => {
+  if (isAnimating && !isPaused) {
+    stopAnimation(); // pause logic
+    setIsPaused(true);
+  } else if (isPaused) {
+    animateAlgorithm(); // resume logic
+    setIsPaused(false);
+  }
+  };
 
   const handleCellMouseDown = useCallback((row, col) => {
     if (isAnimating) return;
