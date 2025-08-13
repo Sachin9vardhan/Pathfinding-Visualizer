@@ -86,6 +86,7 @@ function App() {
           <div className="w-full lg:w-80 flex-shrink-0">
             <ControlPanel
               onRunAlgorithm={animateAlgorithm}
+              onStop={stopAnimation} // ✅ Pass the function
               onReset={resetGrid}
               onClearWalls={clearWalls}
               isAnimating={isAnimating}
