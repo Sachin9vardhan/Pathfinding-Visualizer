@@ -1,17 +1,23 @@
 import { useState, useCallback } from 'react';
 import { PathfindingAlgorithms } from '../utils/pathfinding';
+import { useEffect } from 'react';
+
 
 const ROWS = 20;
 const COLS = 50;
 
 export const usePathfinding = () => {
   const [grid, setGrid] = useState(() => createInitialGrid());
+  const [visitedOrder, setVisitedOrder] = useState([]); // full algorithm result
+  const [path, setPath] = useState([]);
   const [startPos, setStartPos] = useState({ row: 10, col: 5 });
   const [endPos, setEndPos] = useState({ row: 10, col: 44 });
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentAlgorithm, setCurrentAlgorithm] = useState(null);
   const [algorithmResult, setAlgorithmResult] = useState(null);
   const [animationSpeed, setAnimationSpeed] = useState(95);
+  const [traceProgress, setTraceProgress] = useState(100); // default: full trace
+
 
   function createInitialGrid() {
     const grid = [];
@@ -51,8 +57,13 @@ export const usePathfinding = () => {
       );
       return newGrid;
     });
-    setAlgorithmResult(null);
-    setCurrentAlgorithm(null);
+  // Reset traced nodes for slider
+  setTracedVisitedNodes([]);
+  setTracedPath([]);
+
+  setAlgorithmResult(null);
+  setCurrentAlgorithm(null);
+  setTraceProgress(100); // optional: reset slider to full
   }, []);
 
   const clearWalls = useCallback(() => {
@@ -69,8 +80,12 @@ export const usePathfinding = () => {
       );
       return newGrid;
     });
+    
+    setTracedVisitedNodes([]);
+    setTracedPath([]);
     setAlgorithmResult(null);
     setCurrentAlgorithm(null);
+    setTraceProgress(100);
   }, []);
 
   const toggleWall = useCallback((row, col) => {
@@ -124,6 +139,15 @@ export const usePathfinding = () => {
       setEndPos({ row, col });
     }
   }, [isAnimating, grid]);
+
+
+  /////
+  /////
+  ////
+  /////
+  
+  const [tracedVisitedNodes, setTracedVisitedNodes] = useState([]);
+  const [tracedPath, setTracedPath] = useState([]);
 
   const animateAlgorithm = useCallback(async (algorithm) => {
     if (isAnimating) return;
@@ -207,19 +231,37 @@ export const usePathfinding = () => {
     }
   }, [grid, startPos, endPos, isAnimating, animationSpeed, resetGrid]);
 
+  useEffect(() => {
+  if (!algorithmResult) return;
+
+  const visited = algorithmResult.visitedNodes || [];
+  const pathNodes = algorithmResult.path || [];
+
+  const visitedCount = Math.floor((traceProgress / 100) * visited.length);
+  const pathCount = Math.floor((traceProgress / 100) * pathNodes.length);
+
+  setTracedVisitedNodes(visited.slice(0, visitedCount));
+  setTracedPath(pathNodes.slice(0, pathCount));
+  }, [traceProgress, algorithmResult]);
+
   return {
     grid,
     startPos,
     endPos,
     isAnimating,
     currentAlgorithm,
-    algorithmResult,
+    algorithmResult, // contains visitedOrder
     animationSpeed,
     setAnimationSpeed,
     resetGrid,
     clearWalls,
     toggleWall,
     moveStartOrEnd,
+    traceProgress,
+    setTraceProgress,
+    tracedVisitedNodes,
+    tracedPath,
     animateAlgorithm,
+
   };
 };

@@ -2,6 +2,7 @@ import React from 'react';
 
 export const GridCell = ({
   cell,
+  status,              // 👈 add this prop
   onClick,
   onMouseDown,
   onMouseEnter,
@@ -24,9 +25,11 @@ export const GridCell = ({
     if (cell.isStart) return `${baseClasses} bg-green-500 hover:bg-green-600 shadow-md`;
     if (cell.isEnd) return `${baseClasses} bg-red-500 hover:bg-red-600 shadow-md`;
     if (cell.isWall) return `${baseClasses} bg-black hover:bg-gray-900 border-gray-900`;
-    if (cell.isPath) return `${baseClasses} bg-yellow-400 shadow-sm animate-pulse`;
+    // if (cell.isPath) return `${baseClasses} bg-yellow-400 shadow-sm animate-pulse`;
     
-    if (cell.isVisited) {
+    // Use status from Grid for trace / path highlighting
+    if (status === 'path') return `${baseClasses} bg-yellow-400 shadow-sm animate-pulse`;
+    if (status === 'visited') {
       const algorithmColors = {
         'bfs': 'bg-blue-300',
         'dfs': 'bg-purple-300', 

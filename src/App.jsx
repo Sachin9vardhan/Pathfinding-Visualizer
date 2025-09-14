@@ -14,12 +14,16 @@ function App() {
     currentAlgorithm,
     algorithmResult,
     animationSpeed,
+    traceProgress,
     setAnimationSpeed,
     resetGrid,
     clearWalls,
     toggleWall,
     moveStartOrEnd,
     animateAlgorithm,
+    setTraceProgress,
+    tracedVisitedNodes,   // 👈 from hook
+    tracedPath,           // 👈 from hook
   } = usePathfinding();
 
   const [isMousePressed, setIsMousePressed] = useState(false);
@@ -67,13 +71,27 @@ function App() {
     }
   }, [isAnimating, grid, isMousePressed, toggleWall]);
 
+  // //
+// //
+// //
+    // const tracedVisited = visitedOrder.slice(
+    //   0,
+    //   Math.floor((traceProgress / 100) * visitedOrder.length)
+    // );
+
+    // const tracedPath = path.slice(
+    //   0,
+    //   Math.floor((traceProgress / 100) * path.length)
+    // );
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 py-8">
+    <div className="min-h-screen bg-[#EAD7C8] py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
           <div className="flex-shrink-0">
             <Grid
               grid={grid}
+              visitedNodes={tracedVisitedNodes}   // 👈 NEW // ✅ correct source
+              path={tracedPath}              // 👈 NEW // ✅ correct source
               onCellClick={handleCellClick}
               onCellMouseDown={handleCellMouseDown}
               onCellMouseEnter={handleCellMouseEnter}
@@ -82,7 +100,7 @@ function App() {
             />
           </div>
           
-          <div className="w-full lg:w-80 flex-shrink-0">
+          <div className="w-full lg:w-80 flex-shrink-0 ">
             <ControlPanel
               onRunAlgorithm={animateAlgorithm}
               onReset={resetGrid}
@@ -92,6 +110,8 @@ function App() {
               algorithmResult={algorithmResult}
               animationSpeed={animationSpeed}
               onSpeedChange={setAnimationSpeed}
+              traceProgress={traceProgress}              // 👈 NEW
+              onTraceChange={setTraceProgress}           // 👈 NEW
             />
           </div>
         </div>
