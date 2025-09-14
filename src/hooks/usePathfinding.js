@@ -11,7 +11,7 @@ export const usePathfinding = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentAlgorithm, setCurrentAlgorithm] = useState(null);
   const [algorithmResult, setAlgorithmResult] = useState(null);
-  const [animationSpeed, setAnimationSpeed] = useState(50);
+  const [animationSpeed, setAnimationSpeed] = useState(95);
 
   function createInitialGrid() {
     const grid = [];
