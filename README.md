@@ -1,5 +1,5 @@
 # Pathfinding Visualizer
-# https://pathfinding-visualizer-one-mu.vercel.app/
+https://pathfinding-visualizer-three-ruddy.vercel.app/
 
 This is a React-based **Pathfinding Algorithm Visualizer** created as a learning project.  
 It allows users to interactively explore how popular pathfinding algorithms work by visualizing their step-by-step execution on a grid.
